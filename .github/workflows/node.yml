@@ -1,10 +1,10 @@
 name: 日本時間の平日８時４５分に実行 
 
 on:
-  #schedule:
-  #- cron:  '5 2 * * 6' #(UTCなので9時間ズレ)
-    push:
-     branches: [ master ]
+  schedule:
+    - cron:  '15 2 * * *' #(UTCなので9時間ズレ)
+   # push:
+    # branches: [ master ]
 
 jobs:
   build:
