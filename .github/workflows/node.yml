@@ -1,0 +1,31 @@
+name: 日本時間の12:30,18:30に配信 
+
+on:
+ # schedule:
+  #- cron:  '30 3,9 * * *' #(UTCなので9時間ズレ)
+   push:
+     branches: [ master ]
+
+jobs:
+  build:
+    # マシン準備
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [15.x]
+
+    # 以下が実際のステップ
+    steps:
+
+    - uses: actions/checkout@v2
+    - name: Use Node.js 15.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: '15.x'
+
+    - name: npm install command
+      run: npm i
+
+    - name: メッセージ配信
+      run: node app.js
